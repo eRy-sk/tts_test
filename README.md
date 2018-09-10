@@ -1,24 +1,17 @@
-# README
+# TTS技術検証
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Rails 5.2  
+Ruby 2.5  
+`brew install mpg123` ファイルを保存せず、直接再生する場合必要
 
-Things you may want to cover:
+## お試し
+ユーザー登録  
+`http://localhost:3000/users/new`  
+再生
+`http://localhost:3000/`
 
-* Ruby version
+## 再生
+`'こんにちは'.play 'ja'`
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## 保存
+`'こんにちは'.to_file 'ja'`
