@@ -1,14 +1,12 @@
+ユーザーを選択し、定型文を再生
 <%= form_tag speak_path do %>
   <%= select_tag 'user1', options_for_select(@names) %>
   <%= select_tag 'user2', options_for_select(@names) %>
-  <%= select_tag 'lang', options_for_select(@langs) %>
   <%= submit_tag %>
 <% end %>
-
-
-
-
-
+<br />
+<br />
+おまけ：任意の文字列を任意の言語で再生
 <%= form_tag bonus_path do %>
   <%= text_field_tag :text %>
   <%= select_tag 'lang', options_for_select(@langs) %>
