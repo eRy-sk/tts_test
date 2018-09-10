@@ -6,7 +6,7 @@
 <% end %>
 <br />
 <br />
-おまけ：任意の文字列を任意の言語で再生
+おまけ：任意の文字列を言語を指定して再生
 <%= form_tag bonus_path do %>
   <%= text_field_tag :text %>
   <%= select_tag 'lang', options_for_select(@langs) %>
