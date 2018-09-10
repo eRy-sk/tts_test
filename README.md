@@ -15,3 +15,15 @@ Ruby 2.5
 
 ## 保存
 `'こんにちは'.to_file 'ja'`
+
+# 定期実行
+１分ごとに`:count`の少ない順にユーザー名が２人ずつ掃除当番に呼ばれる
+
+`gem 'whenever', require: false`  
+`$ wheneverize .`で`config/schedule.rb`を作成
+
+## 注意点
+ActiveRecordをいじるため以下が必要  
+[`=> :environment do`](https://github.com/eRy-sk/tts_test/blob/master/lib/tasks/speak.rake#L3)  
+それを定期実行で正常に動かすために設定が必要  
+[`set :environment, rails_env`](https://github.com/eRy-sk/tts_test/blob/master/config/schedule.rb#L10)
