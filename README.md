@@ -25,5 +25,5 @@ Ruby 2.5
 ## 注意点
 ActiveRecordをいじるため以下が必要  
 [`=> :environment do`](https://github.com/eRy-sk/tts_test/blob/master/lib/tasks/speak.rake#L3)  
-それを開発環境の定期実行で正常に動かすために設定が必要  
+それを環境ごとに定期実行で正常に動かすために設定が必要  
 [`set :environment, rails_env`](https://github.com/eRy-sk/tts_test/blob/master/config/schedule.rb#L10)
