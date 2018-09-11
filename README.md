@@ -48,5 +48,5 @@ end
 ```
 [ビュー](<%= audio_tag sound_for_user_path(@user), controls: true %>)
 ```show.html.erb
-<%= audio_tag sound_for_user_path(@user), controls: true %> # 送った一時音声ファイルを受け取って再生できる
+<%= audio_tag sound_for_user_path(@user), controls: true %> <!-- 送った一時音声ファイルを受け取って再生できる -->
 ```
