@@ -63,7 +63,7 @@ class UsersController < ApplicationController
 
   def sound_for
     instant_file = Tempfile.open(['instant_file', '.mp3'])
-    @user.name.to_file('ja', instant_file.path)
+    @user.name.to_file('en', instant_file.path)
     send_file(instant_file)
   end
 
