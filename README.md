@@ -41,9 +41,10 @@ end
 [コントローラ](https://github.com/eRy-sk/tts_test/blob/master/app/controllers/users_controller.rb#L64)
 ```users_controller.rb
 def sound_for
-  instant_file = Tempfile.open(['instant_file', '.mp3']) # 一時ファイルの作成
-  @user.name.to_file('ja', instant_file.path) # 作成した一時ファイルに音声を書き込み
-  send_file(instant_file) # 一時音声ファイルを送る
+  Tempfile.open(['instant_file', '.mp3']) do |instant_file| # 一時ファイルの作成
+    @user.name.to_file('en', instant_file.path) # 作成した一時ファイルに音声を書き込み
+    send_file(instant_file) # 一時音声ファイルを送る
+  end
 end
 ```
 [ビュー](<%= audio_tag sound_for_user_path(@user), controls: true %>)
