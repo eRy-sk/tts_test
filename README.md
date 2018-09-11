@@ -29,16 +29,8 @@ ActiveRecordをいじるため以下が必要
 それを環境ごとに定期実行で正常に動かすために設定が必要  
 [`set :environment, rails_env`](https://github.com/eRy-sk/tts_test/blob/master/config/schedule.rb#L10)
 
-[playメソッド](https://github.com/c2h2/tts/blob/master/lib/tts.rb#L82)
-```ruby
-fn = "tts_playonce"
-self.to_file(lang, fn) # 一時ファイルの作成
-times.times{|i| `mpg123 -q #{fn}`}　# 引数timeの処理（再生回数）
-File.delete(fn) # 一時ファイルの削除
-```
-
 # 音声の確認
-ルーティング
+[ルーティング](https://github.com/eRy-sk/tts_test/blob/master/config/routes.rb#L2)
 ```routes.rb
 resources :users do
   member do
@@ -46,15 +38,15 @@ resources :users do
   end
 end
 ```
-コントローラ
+[コントローラ](https://github.com/eRy-sk/tts_test/blob/master/app/controllers/users_controller.rb#L64)
 ```users_controller.rb
 def sound_for
-  instant_file = Tempfile.open(['instant_file', '.mp3'])
-  @user.name.to_file('ja', instant_file.path)
-  send_file(instant_file)
+  instant_file = Tempfile.open(['instant_file', '.mp3']) # 一時ファイルの作成
+  @user.name.to_file('ja', instant_file.path) # 作成した一時ファイルに音声を書き込み
+  send_file(instant_file) # 一時音声ファイルを送る
 end
 ```
-ビュー
+[ビュー](<%= audio_tag sound_for_user_path(@user), controls: true %>)
 ```show.html.erb
-<%= audio_tag sound_for_user_path(@user), controls: true %>
+<%= audio_tag sound_for_user_path(@user), controls: true %> # 送った一時音声ファイルを受け取って再生できる
 ```
