@@ -28,3 +28,11 @@ ActiveRecordをいじるため以下が必要
 [`=> :environment do`](https://github.com/eRy-sk/tts_test/blob/master/lib/tasks/speak.rake#L3)  
 それを環境ごとに定期実行で正常に動かすために設定が必要  
 [`set :environment, rails_env`](https://github.com/eRy-sk/tts_test/blob/master/config/schedule.rb#L10)
+
+playメソッド
+```
+fn = "tts_playonce"
+self.to_file(lang, fn) # 一時ファイルの作成
+times.times{|i| `mpg123 -q #{fn}`}　# 引数timeの処理（再生回数）
+File.delete(fn) # 一時ファイルの削除
+```
