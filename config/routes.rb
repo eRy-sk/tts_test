@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  resources :users
+  resources :users do
+    member do
+      get 'sound_for'
+    end
+  end
   root 'speak#index'
   post '/speak', to: 'speak#speak'
   post '/bonus', to: 'speak#bonus'

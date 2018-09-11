@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :sound_for]
 
   # GET /users
   # GET /users.json
@@ -59,6 +59,12 @@ class UsersController < ApplicationController
       format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def sound_for
+    instant_file = Tempfile.open(['instant_file', '.mp3'])
+    @user.name.to_file('ja', instant_file.path)
+    send_file(instant_file)
   end
 
   private

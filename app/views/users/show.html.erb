@@ -3,6 +3,7 @@
 <p>
   <strong>Name:</strong>
   <%= @user.name %>
+  <%= audio_tag sound_for_user_path(@user), controls: true %>
 </p>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
