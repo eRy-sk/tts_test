@@ -36,3 +36,25 @@ self.to_file(lang, fn) # 一時ファイルの作成
 times.times{|i| `mpg123 -q #{fn}`}　# 引数timeの処理（再生回数）
 File.delete(fn) # 一時ファイルの削除
 ```
+
+# 音声の確認
+ルーティング
+```routes.rb
+resources :users do
+  member do
+    get 'sound_for'
+  end
+end
+```
+コントローラ
+```users_controller.rb
+def sound_for
+  instant_file = Tempfile.open(['instant_file', '.mp3'])
+  @user.name.to_file('ja', instant_file.path)
+  send_file(instant_file)
+end
+```
+ビュー
+```show.html.erb
+<%= audio_tag sound_for_user_path(@user), controls: true %>
+```
