@@ -22,7 +22,7 @@ gem 'tts'
 `'こんにちは'.to_file 'ja'`
 
 # 定期実行
-１分ごとに`:count`の少ない順にユーザー名が２人ずつ掃除当番に呼ばれる
+定期的に`:count`の少ない順にユーザー名が２人ずつ呼ばれる
 
 `gem 'whenever', require: false`  
 `$ wheneverize .`で`config/schedule.rb`を作成
